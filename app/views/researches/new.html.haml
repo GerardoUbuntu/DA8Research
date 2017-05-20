@@ -1,0 +1,13 @@
+%h1 Create a Research
+
+= form_for(:research, :url => {controller: 'researches', action: 'create'}) do |f|
+  = f.label :title, 'Research Title'
+  = f.text_field :title
+   
+  = f.label :status, 'Status'
+  = f.select :status, ['On-Going','Completed']
+ 
+  = f.label :date_started, 'Date Started'
+  = f.date_select :date_started
+  
+  = f.submit :Create

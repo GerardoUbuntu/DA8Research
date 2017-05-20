@@ -1,0 +1,17 @@
+%h2 Details about #{@research.title}
+
+%ul#details
+  %li
+    Status:
+    = @research.status
+  %li
+    Date Started:
+    = @research.date_started.strftime("%B %d, %Y")
+
+%h3 Description:
+
+-#%p#description= @movie.description
+
+= link_to 'Edit', edit_research_path(@research)
+= button_to 'Delete', research_path(@research), :method => :delete, :confirm => 'Are you sure?'
+= link_to 'Back to research list', researches_path
