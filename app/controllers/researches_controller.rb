@@ -26,7 +26,7 @@ class ResearchesController < ApplicationController
 
   def update
      @research = Research.find params[:id]
-     @research.update_attributes!(movie_params)
+     @research.update_attributes!(research_params)
      flash[:notice] = "#{@research.title} was successfully updated."
      redirect_to research_path
   end

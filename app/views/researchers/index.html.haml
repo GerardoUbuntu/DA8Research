@@ -1,0 +1,19 @@
+%h1 All Researches
+
+
+%table#movies
+  %thead
+    %tr
+      %th First Name
+      %th Middle Name
+      %th Last Name
+      %th Employee No.
+  %tbody
+    - @researchers.each do |research|
+      %tr
+        %td= research.first_name
+        %td= research.middle_name
+        %td= research.last_name
+        %td= research.employee_no
+
+= link_to 'Add new researcher', new_research_path

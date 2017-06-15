@@ -1,20 +1,26 @@
--#  This file is app/views/movies/index.html.haml
-%h1 All Researches
-
-
-%table#movies
-  %thead
-    %tr
-      %th Research Title
-      %th Rating
-      %th Date Started
-      %th More Info
-  %tbody
-    - @researches.each do |research|
+%div
+  %h1#exo Researches
+  <div class="col-lg-6">
+  <div class="input-group">
+  <input type="text" class="form-control" placeholder="Search for...">
+  <span class="input-group-btn">
+  <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+  </span>
+  </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  %table#movies
+    %thead
       %tr
-        %td= research.title 
-        %td= research.status
-        %td= research.date_started
-        %td= link_to "More about #{research.title}", research_path(research)
+        %th Research Title
+        %th Status
+        %th Date Started
+        %th More Info
+    %tbody
+      - @researches.each do |research|
+        %tr
+          %td= research.title 
+          %td= research.status
+          %td= research.date_started
+          %td= link_to "More about #{research.title}", research_path(research)
 
-= link_to 'Add new movie', new_research_path
+  = link_to 'Add new research', new_research_path

@@ -5,13 +5,11 @@
     = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-
+    <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'>
   %body
-    %h1.title Researches
-    #main
-      - if flash[:notice]
-        #notice.message= flash[:notice]
-      - elsif flash[:warning]
-        #warning.message= flash[:warning]
-
-      = yield
+    %header
+      = render 'layouts/navigation'
+    %main
+      = render 'layouts/messages' 
+      = yield 
