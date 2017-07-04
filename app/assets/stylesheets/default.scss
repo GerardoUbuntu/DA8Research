@@ -1,10 +1,10 @@
 html, body {
   margin: 0;
-  padding: 0;
-  background: White;
+  padding-top: 0;
   color: DarkSlateGrey;
   font-family: Tahoma, Verdana, sans-serif;
   font-size: 10pt;
+  background-color:   #F8F8FF;
 }
 div#main {
   margin: 0;
@@ -36,18 +36,18 @@ h1.title {
   font-size: 2em;
   font-style: normal;
 }
-table#movies {
+table.movies {
   margin: 10px;
   border-collapse: collapse;
   width: 100%;
   border-bottom: 2px solid black;
 }
-table#movies th {
+table.movies th {
   border: 2px solid white;
   font-weight: bold;
   background-color: #bfff00;
 }
-table#movies th, table#movies td {
+table.movies th, table.movies td {
   padding: 4px;
   text-align: left;
 }
