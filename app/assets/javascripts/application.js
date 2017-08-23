@@ -13,4 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require react
+//= require react_ujs
+//= require components
+//= require react_bootstrap
+
+//= require jquery
+//= require bootstrap-sprockets
+
+

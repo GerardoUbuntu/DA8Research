@@ -1,30 +1,50 @@
 class ResearchesController < ApplicationController
   
   def research_params
-    params.require(:research).permit(:title, :status, :date_started)
+    params.require(:research).permit(:title, :status, :date_started, :zone, :commodity, :discipline,
+            :sector)
   end
 
-  def index
-  	 @researches = Research.all
+  def index 
+     @researches = Research.paginate(page: 1)
+     @page = 1
+     @pages = Research.pages
+
+     
+  end
+
+  def paging
+    render json: {
+      researches: Research.paginate(page: params[:page]),
+      page: params[:page],
+      pages: Research.pages
+    }
   end
 
   def new
-     render "new"
+     
+     @researcher = Researcher.new
   end
 
   def create
-  	@research = Research.create!(research_params)
+    current_user
+    @research = Research.new(research_params)
+    
+
+    @research.save!
     redirect_to researches_path
   end 
 
   def destroy
+     current_user
      @research = Research.find(params[:id])
      @research.destroy
+     head :no_content
      flash[:notice] = "Research '#{@research.title}' deleted."
-     redirect_to researches_path
   end 
 
   def update
+     current_user
      @research = Research.find params[:id]
      @research.update_attributes!(research_params)
      flash[:notice] = "#{@research.title} was successfully updated."
@@ -33,6 +53,13 @@ class ResearchesController < ApplicationController
 
   def edit
      @research = Research.find params[:id]
+  end
+
+  def search
+      query = params[:query]
+      researches = Research.where('title LIKE ? OR sector LIKE ? OR commodity LIKE ?',
+                          "%#{query}%", "%#{query}%", "%#{query}%")
+      render json: researches  
   end
 
   def show

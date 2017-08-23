@@ -11,7 +11,7 @@
 %h3 Description:
 
 -#%p#description= @movie.description
-
-= link_to 'Edit', edit_research_path(@research)
-= button_to 'Delete', research_path(@research), :method => :delete, :confirm => 'Are you sure?'
-= link_to 'Back to research list', researches_path
+- if logged_in? 
+  = button_to 'Edit', edit_research_path(@research)
+  = button_to 'Delete', research_path(@research), :method => :delete, :confirm => 'Are you sure?'
+= button_to 'Back to research list', researches_path, :method => "get"

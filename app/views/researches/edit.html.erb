@@ -1,4 +1,25 @@
-%h1 Create a Research
+ <div class="container">
+            <div class ="col-sm-6 col-sm-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Add Research</h3>
+                </div>
+                <div class="panel-body">
+                    <%= form_for @research, :url => {controller: 'researches', action: 'update'} do |f| %>
+                         <%= react_component 'EditResearch', {research: @research}%>
+                   <%end%>
+     
+                </div>
+            </div>
+        </div> 
+  </div>
+
+<%= react_component '' %>
+
+
+
+
+%h1 Edit a Research
 
 = form_for(:research, :url => {controller: 'researches', action: 'create'}) do |f|
   = f.label :title, 'Research Title'

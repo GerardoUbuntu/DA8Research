@@ -2,3 +2,8 @@
 <li><%= link_to 'Researches', root_url , class: 'pages'%></li>
 <li><%= link_to 'Researchers', root_url, class: 'pages' %></li>
 <li><%= link_to 'About', root_url, class: 'pages' %></li>
+<% if user_signed_in? %>
+  <%if current_user.admin?  %>
+    <li><%= link_to 'Users', users_path, class: 'pages' %></li>
+  <% end %>
+<% end %>

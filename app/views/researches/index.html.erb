@@ -1,0 +1,53 @@
+<%= react_component 'Researches', { data: @researches, logged_in: logged_in?, pages: @pages, page: @page} %>
+
+<!---
+%div
+  %h1#exo Researches
+  
+
+
+  %div.col-lg-6
+    %div.input-groups
+      %input{:type => "text", :class => "form-control", :placeholder => "Search for..."}
+      %span.input-group-btn
+        %button{:class=>"btn btn-default" , :type=>"button"}
+          %i{:class=>"glyphicon glyphicon-search"}
+  
+  
+
+  %div{:class => "container", :style => " margin : 0; padding : 0;"}
+    %ul{:style => "list-style-type: none; margin : 0; padding : 0;"}
+      %li{:style => " margin : 0; padding : 0;"}
+        %div.container-fluid 
+          - @researches.each do |research|
+            %h1= link_to "#{research.title}", research_path(research)
+            %p
+              %strong Researchers: 
+              - research.researchers.each do |reseacher|
+                researcher.name
+              
+            %p 
+              %strong Status: 
+              #{research.status}    
+              
+
+     
+       
+
+  %table{:class => "table table-condensed movies"}
+    %thead
+      %tr
+        %th Research Title
+        %th Status
+        %th Date Started
+        %th More Info
+    %tbody
+      - @researches.each do |research|
+        %tr
+          %td= research.title 
+          %td= research.status
+          %td= research.date_started
+          %td= link_to "More about #{research.title}", research_path(research)
+  - if logged_in? 
+    = link_to 'Add new research', new_research_path
+--->

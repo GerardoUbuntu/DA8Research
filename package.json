@@ -1,0 +1,26 @@
+{
+  "name": "cmsc127",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/gaabantao1/CMSC127.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/gaabantao1/CMSC127/issues"
+  },
+  "homepage": "https://gitlab.com/gaabantao1/CMSC127#README",
+  "dependencies": {
+    "react-select": "^1.0.0-rc.5"
+  }
+}
