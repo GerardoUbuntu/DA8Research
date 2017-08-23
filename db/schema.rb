@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810103741) do
+ActiveRecord::Schema.define(version: 20170823153642) do
+
+  create_table "projects", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "research_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["research_id"], name: "index_projects_on_research_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
 
   create_table "researchers", force: :cascade do |t|
     t.string   "first_name"
@@ -24,7 +33,6 @@ ActiveRecord::Schema.define(version: 20170810103741) do
   create_table "researches", force: :cascade do |t|
     t.string   "title"
     t.string   "status"
-    t.datetime "date_started"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "fund_source"
@@ -32,6 +40,8 @@ ActiveRecord::Schema.define(version: 20170810103741) do
     t.string   "commodity"
     t.string   "discipline"
     t.string   "sector"
+    t.date     "date_started"
+    t.text     "abstract"
   end
 
   create_table "tasks", force: :cascade do |t|

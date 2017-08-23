@@ -1,6 +1,6 @@
 class Research < ApplicationRecord
-    has_many :tasks
-    has_many :researchers, through: :tasks
+   has_many :projects
+   has_many :users, through: :projects
     
 
     def starting_date

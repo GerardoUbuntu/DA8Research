@@ -72,7 +72,7 @@ var AddUser = React.createClass({
                             <div className="col-sm-9">
                                 <input type="email" style = {inputStyle} className="form-control"  placeholder="Enter email" name="email" ref="email"
                                         value={this.state.email}
-                                        onChange={this.handleChange} />
+                                        onChange={this.handleChange} required/>
                             </div>
                         </div>
 
@@ -81,14 +81,14 @@ var AddUser = React.createClass({
                             <div className="col-sm-9">
                                 <input type="password" style = {inputStyle} className="form-control"   name="password" ref="password"
                                     value={this.state.password}
-                                    onChange={this.handleChange} />
+                                    onChange={this.handleChange} required/>
                             </div>
                         </div>
 
                         <div className="form-group">
                             <label className="control-label col-sm-4" style={labelStyle} >Password_confirmation:</label>
                             <div className="col-sm-8">
-                                <input type="password" style = {inputStyle} className="form-control"   name="password_confirmation" ref="password_confirmation"
+                                <input type="password" style = {inputStyle} className="form-control"  required name="password_confirmation" ref="password_confirmation"
                                     value={this.state.password_confirmation}
                                     onChange={this.handleChange} />
                             </div>

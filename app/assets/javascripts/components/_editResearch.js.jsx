@@ -55,19 +55,19 @@ var EditResearch = React.createClass({
                         <div className="form-group">
                             <label className="control-label col-sm-2" style={labelStyle} for="email">Zone:</label>
                             <div className="col-sm-10">
-                                <input name="research[zone]" type="text" style = {inputStyle} className="form-control" id="email" placeholder="Enter email" />
+                                <input name="research[zone]" type="text" style = {inputStyle} className="form-control" id="email"  />
                             </div>
                         </div>
                         <div className="form-group">
                             <label className="control-label col-sm-2" style={labelStyle} for="email">Discipline:</label>
                             <div className="col-sm-10">
-                                <input name="research[discipline]" type="text" style = {inputStyle} className="form-control" id="email" placeholder="Enter email" />
+                                <input name="research[discipline]" type="text" style = {inputStyle} className="form-control" id="email"  />
                             </div>
                         </div>
                         <div className="form-group">
                             <label className="control-label col-sm-2" style={labelStyle} >Sector:</label>
                             <div className="col-sm-10">
-                                <input type="text" name="research[sector]" style = {inputStyle} className="form-control"  placeholder="Enter email" />
+                                <input type="text" name="research[sector]" style = {inputStyle} className="form-control"   />
                             </div>
                         </div>
 
@@ -75,7 +75,7 @@ var EditResearch = React.createClass({
                         <div className="form-group">
                             <label className="control-label col-sm-2" style={labelStyle} >Fund source:</label>
                             <div className="col-sm-10">
-                                <input name="research[fund_source]" type="text" style = {inputStyle} className="form-control"  placeholder="Enter email" />
+                                <input name="research[fund_source]" type="text" style = {inputStyle} className="form-control"  />
                             </div>
                         </div>
                         <div className = "row">
