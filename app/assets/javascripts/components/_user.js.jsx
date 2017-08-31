@@ -1,6 +1,12 @@
+
+
+
+
+
 var User = React.createClass({
   getInitialState: function() {
-    return { edit: false };
+    return { edit: false,
+    options: []};
   },
 
   handleDelete: function(e) {
@@ -64,7 +70,7 @@ var User = React.createClass({
         { value: 'user', label: 'user', id: 1 },
         { value: 'admin', label: 'admin', id: 2 }
     ]; 
-     var items = options.map((item) => { return (<option key= {item.id} selected = {this.checkValue(item.value)?"selected":"unselected"} >{item.value}</option>) }); 
+     var items = options.map((item) => { return (<option key={item.id} value={item.value}>{item.value}</option>) }); 
     return(
       <tr>
 
@@ -77,12 +83,12 @@ var User = React.createClass({
           />
         </td>
         <td>
-            <select className="form-control" name="role" ref="role" >
+            <select  className="form-control" defaultValue={this.props.user.role} name="role" ref="role">
                  {items}
             </select>    
             
         </td>
-        
+          
         <td>
           <a className="btn btn-success btn-sm"
              onClick={this.handleUpdate}>

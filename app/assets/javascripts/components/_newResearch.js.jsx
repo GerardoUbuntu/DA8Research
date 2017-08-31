@@ -1,5 +1,10 @@
 var NewResearch = React.createClass({
-     
+
+getInitialState: function() {
+    return { 
+       users: this.props.users
+    };
+},
 
     render(){
 
@@ -15,6 +20,16 @@ var NewResearch = React.createClass({
        var selectStyle = {
            width: 50
        }; 
+
+        var options =[];
+       
+        for(var i= 0; i<this.props.users.length; i++){
+            options.push({id: this.props.users[i].id, label: this.props.users[i].email, value: this.props.users[i].email});
+        }
+
+        
+        var items = options.map((item) => { return (<option key={item.id} value={item.value}>{item.label}</option>) });
+
         return(
             
            <div>
@@ -33,10 +48,7 @@ var NewResearch = React.createClass({
                          <div className="form-group">
                             <label for="sel1" className="control-label col-sm-2" style = {labelStyle}>Status:</label>
                             <div className = "col-sm-10">
-                            <select name = "research[status]"style = {inputStyle} className="form-control" id="sel1" required>
-                                <option>On-Going</option>
-                                <option>Completed</option>
-                            </select>
+                           
                             </div>         
                        </div>
                        <div className="form-group">
@@ -78,6 +90,16 @@ var NewResearch = React.createClass({
                                 <input name="research[fund_source]" type="text" style = {inputStyle} className="form-control"  required />
                             </div>
                         </div>
+
+                        <div className="form-group">
+                            <label for="sel1" className="control-label col-sm-2" style = {labelStyle}>Researches:</label>
+                            <div className = "col-sm-10">
+                            <select multiple name = "research[users][]"style = {inputStyle} className="form-control" id="sel1" required>
+                                {items}
+                            </select>
+                            </div>         
+                       </div>
+
                         <div className = "row">
                            <div className = "col-sm-6 col-sm-offset-3">
                               <button type="submit" className="btn btn-primary" style = {inputStyle}>Submit</button>

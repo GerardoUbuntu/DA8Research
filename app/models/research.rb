@@ -3,8 +3,8 @@ class Research < ApplicationRecord
    has_many :users, through: :projects
     
 
-    def starting_date
-        @starting_date = self.date_started
+    def as_json(options={})
+        super(:include =>[:users])
     end
 
     class << self

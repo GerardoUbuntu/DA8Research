@@ -1,4 +1,6 @@
  <div class="container">
+            <img src="assets/images/da.png" alt="rss feed" />
+            <%= image_tag("da.png")%>
             <div class ="col-sm-6 col-sm-offset-3">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -6,7 +8,7 @@
                 </div>
                 <div class="panel-body">
                     <%= form_for :research, :url => {controller: 'researches', action: 'create'} do |f| %>
-                         <%= react_component 'NewResearch'%>
+                         <%= react_component 'NewResearch', {users: @users}%>
                    <%end%>
      
                 </div>

@@ -62,16 +62,23 @@ var Researches = React.createClass({
     },
     
     render() { 
-
+        
+    
         var items= this.state.researches.map((item) => { return (<Research research = {item} key ={item.id} handleDelete={this.handleDelete}/>) });
          return (              
          <div className="container">
-                        
-                <div className="blog-header">
-                    <h1 className="blog-title">DA8 Researches</h1>
-                    <p className="lead blog-description">Research from Department of Agriculture</p>
+              <div className="row"> 
+                <div className="col-md-2">
+                      <%= image_tag("da.png")%>
                 </div>
-                 <div className="row">
+                <div className="col-md-8">
+                    <div className="blog-header">
+                        <h1 className="blog-title">DA8 Researches</h1>
+                        <p className="lead blog-description">Research from Department of Agriculture</p>
+                  </div>
+                </div>
+          </div>
+     <div className="row">
 
         <div className="col-sm-8 blog-main ">
           {items}
@@ -84,9 +91,20 @@ var Researches = React.createClass({
 
         <div className="col-sm-3 col-sm-offset-1 blog-sidebar">
           <div className="sidebar-module sidebar-module-inset">
-            <h4>Search...</h4>
-            <SearchForm handleSearch={this.handleSearch} />
-    <a href= '/researches/new'> Add research </a>
+            Search by:<br/>
+            <select  required>
+                  <option>On-Going</option>
+                  <option>Completed</option>
+             </select>
+            <br/>
+           <SearchForm handleSearch={this.handleSearch} />
+           
+          
+            Sort by:<br/>
+             <select  required>
+                  <option>On-Going</option>
+                  <option>Completed</option>
+             </select>
           </div>
           <div className="sidebar-module">
             <h4>Archives</h4>

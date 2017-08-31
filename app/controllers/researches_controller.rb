@@ -2,27 +2,25 @@ class ResearchesController < ApplicationController
   
   def research_params
     params.require(:research).permit(:title, :status, :date_started, :zone, :commodity, :discipline,
-            :sector)
+            :sector, :abstract, :fund_source)
   end
 
   def index 
-     @researches = Research.paginate(page: 1)
+     @researches = Research.paginate(page: 1).as_json
      @page = 1
-     @pages = Research.pages
-
-     
+     @pages = Research.pages   
   end
 
   def paging
     render json: {
-      researches: Research.paginate(page: params[:page]),
+      researches: Research.paginate(page: params[:page]).as_json,
       page: params[:page],
       pages: Research.pages
     }
   end
 
   def new
-     
+     @users = User.all
      @researcher = Researcher.new
   end
 
@@ -32,6 +30,9 @@ class ResearchesController < ApplicationController
     
 
     @research.save!
+    params[:research][:users].each do |email|
+         @research.users << User.find_by(email: email)
+    end
     redirect_to researches_path
   end 
 
@@ -47,12 +48,19 @@ class ResearchesController < ApplicationController
      current_user
      @research = Research.find params[:id]
      @research.update_attributes!(research_params)
+     @research.users.delete_all
+     params[:research][:users].each do |email|
+        @research.users << User.find_by(email: email)
+     end
      flash[:notice] = "#{@research.title} was successfully updated."
      redirect_to research_path
   end
 
   def edit
-     @research = Research.find params[:id]
+     @research = Research.find(params[:id])
+     @researchJson = @research.as_json
+     @users = User.all
+     
   end
 
   def search

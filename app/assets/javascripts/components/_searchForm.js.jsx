@@ -14,9 +14,13 @@ var SearchForm = React.createClass({
     });
   },
   render() {
+    var style = {
+       marginTop: 10, 
+       marginBottom: 10 
+    };
     return(
 
-       <div className="input-group input-group-sm">
+       <div style= {style}  className="input-group input-group-sm">
           <input ref= "query" type="text" className="form-control" onChange={this.handleSearch} id = "search" placeholder="Search for..."/>
           <span className="input-group-btn">
               <button className="btn btn-default" type="button"><span className="glyphicon glyphicon-search" aria-hidden="true"></span></button>

@@ -6,7 +6,7 @@
                 </div>
                 <div class="panel-body">
                     <%= form_for @research, :url => {controller: 'researches', action: 'update'} do |f| %>
-                         <%= react_component 'EditResearch', {research: @research}%>
+                         <%= react_component 'EditResearch', {research: @researchJson, users: @users}%>
                    <%end%>
      
                 </div>
