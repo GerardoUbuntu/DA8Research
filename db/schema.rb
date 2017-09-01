@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823153642) do
+ActiveRecord::Schema.define(version: 20170901091049) do
 
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20170823153642) do
   create_table "researches", force: :cascade do |t|
     t.string   "title"
     t.string   "status"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "fund_source"
     t.string   "zone"
     t.string   "commodity"
@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(version: 20170823153642) do
     t.string   "sector"
     t.date     "date_started"
     t.text     "abstract"
+    t.string   "technology"
+    t.string   "thematic_area"
+    t.string   "province"
+    t.string   "municipality"
+    t.string   "barangay"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -68,6 +73,7 @@ ActiveRecord::Schema.define(version: 20170823153642) do
     t.datetime "updated_at",                          null: false
     t.string   "username"
     t.integer  "role"
+    t.string   "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

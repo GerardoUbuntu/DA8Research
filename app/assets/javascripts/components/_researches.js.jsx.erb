@@ -84,27 +84,31 @@ var Researches = React.createClass({
           {items}
           <nav>
           <Pagination page={this.state.page}
-                        pages={this.state.pages}
-                        handleChangePage={this.handleChangePage} />
+                      pages={this.state.pages}
+                      handleChangePage={this.handleChangePage} />
           </nav>
         </div>
 
         <div className="col-sm-3 col-sm-offset-1 blog-sidebar">
           <div className="sidebar-module sidebar-module-inset">
-            Search by:<br/>
-            <select  required>
-                  <option>On-Going</option>
-                  <option>Completed</option>
-             </select>
-            <br/>
-           <SearchForm handleSearch={this.handleSearch} />
-           
-          
-            Sort by:<br/>
-             <select  required>
-                  <option>On-Going</option>
-                  <option>Completed</option>
-             </select>
+             <div className="row">
+               <div className="col-md-6">
+                  Search by:<br/>
+                  <select  required>
+                        <option>On-Going</option>
+                        <option>Completed</option>
+                  </select>
+                </div>
+                <div className="col-md-6">
+                    Sort by:<br/>
+                    <select  required>
+                          <option>On-Going</option>
+                          <option>Completed</option>
+                    </select>
+                 </div>   
+              </div>  
+              <SearchForm handleSearch={this.handleSearch} />
+              <AdvanceSearch/>
           </div>
           <div className="sidebar-module">
             <h4>Archives</h4>

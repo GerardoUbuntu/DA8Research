@@ -48,7 +48,10 @@ getInitialState: function() {
                          <div className="form-group">
                             <label for="sel1" className="control-label col-sm-2" style = {labelStyle}>Status:</label>
                             <div className = "col-sm-10">
-                           
+                                <select name = "research[status]"style = {inputStyle} defaultValue ={this.props.research.status} className="form-control" id="sel1">
+                                    <option value="On-Going">On-Going</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
                             </div>         
                        </div>
                        <div className="form-group">
