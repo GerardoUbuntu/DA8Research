@@ -1,4 +1,7 @@
-<%= react_component 'Researches', { data: @researches, logged_in: logged_in?, pages: @pages, page: @page} %>
+<%= react_component 'Researches', { data: @researches, logged_in: user_signed_in?, 
+                                    pages: @pages, page: @page, sectors: @sectors, 
+                                    commodities: @commodities, disciplines: @disciplines,
+                                    technologies: @technologies, sources: @sources} %>
 
 <!---
 %div

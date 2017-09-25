@@ -2,26 +2,59 @@ class ResearchesController < ApplicationController
   
   def research_params
     params.require(:research).permit(:title, :status, :date_started, :zone, :commodity, :discipline,
-            :sector, :abstract, :fund_source)
+            :sector, :abstract, :fund_source, :technology)
   end
 
   def index 
-     @researches = Research.paginate(page: 1).as_json
-     @page = 1
-     @pages = Research.pages   
+     if params.has_key?(:status)
+        @researches = Research.where('status = ? AND sector = ? AND commodity = ? AND discipline = ? ' ,
+                            "#{params[:status]}", "#{params[:sector]}", "#{params[:commodity]}",
+                            "#{params[:discipline]}").paginate(page: 1).as_json
+        if(@researches.count>0)
+           @page = 1
+           @pages = Research.pages  
+        end 
+        @sectors = Research.sectors
+        @commodities = Research.commodities
+        @technologies = Research.technologies
+        @disciplines = Research.disciplines
+        @sources = Research.sources 
+     else
+        @researches = Research.paginate(page: 1).as_json
+        @page = 1
+        @pages = Research.pages   
+        @sectors = Research.sectors
+        @commodities = Research.commodities
+        @technologies = Research.technologies
+        @disciplines = Research.disciplines
+        @sources = Research.sources
+     end
   end
 
   def paging
-    render json: {
-      researches: Research.paginate(page: params[:page]).as_json,
-      page: params[:page],
-      pages: Research.pages
-    }
+    if(params[:sort_by])
+      render json: {
+        researches: Research.paginate(page: params[:page]).order(params[:sort_by] + ' ' + params[:order]).as_json,
+        page: params[:page],
+        pages: Research.pages
+      }
+    else
+      render json: {
+        researches: Research.paginate(page: params[:page]).as_json,
+        page: params[:page],
+        pages: Research.pages
+      }
+    end
   end
 
   def new
      @users = User.all
      @researcher = Researcher.new
+     @sectors = Research.sectors
+     @commodities = Research.commodities
+     @technologies = Research.technologies
+     @disciplines = Research.disciplines
+     @sources = Research.sources
   end
 
   def create
@@ -60,7 +93,11 @@ class ResearchesController < ApplicationController
      @research = Research.find(params[:id])
      @researchJson = @research.as_json
      @users = User.all
-     
+     @sectors = Research.sectors
+    @commodities = Research.commodities
+     @technologies = Research.technologies
+     @disciplines = Research.disciplines
+     @sources = Research.sources   
   end
 
   def search
@@ -69,6 +106,7 @@ class ResearchesController < ApplicationController
                           "%#{query}%", "%#{query}%", "%#{query}%")
       render json: researches  
   end
+
 
   def show
      id = params[:id] # retrieve movie ID from URI route

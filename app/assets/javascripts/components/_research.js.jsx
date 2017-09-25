@@ -17,8 +17,7 @@ Research = React.createClass({
           }
 
           return ( 
-            <div key = {this.props.research.id}> 
-                <hr/>
+            <div className="blog-post" key = {this.props.research.id}> 
                 <div className = "row">
                     <div className = "col-md-8">    
                         <a href={`/researches/${this.props.research.id}`} ><h2 className="blog-post-title">{this.props.research.title}</h2></a>
@@ -33,7 +32,7 @@ Research = React.createClass({
                          </a>
                     </div> 
                 </div>    
-                    <div className = "blog-post row" >  
+                    <div className = "row blog-description" >  
                         <p> Researchers: {researchers} </p>  
                         <p> Summary: {this.props.research.abstract}</p>
                         <div className="row"> 
@@ -53,6 +52,7 @@ Research = React.createClass({
                             </div>    
                         </div>            
                  </div> 
+                 <Modal research = {this.props.research} handleDelete={this.handleDelete}/>
             </div>
         ) 
     }  

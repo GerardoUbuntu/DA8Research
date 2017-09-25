@@ -8,15 +8,13 @@ as :user do
   put 'users' => 'devise/registrations#update', :as => 'user_registration'
 end
   
-  
-  get '/welcome', to: 'welcome#index'
   get '/about', to: 'pages#about'
   get '/home', to: 'pages#home' 
   get  '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-   root 'researches#index'
+   root 'pages#home'
 resources :researches do
   get :search, on: :collection
   get :paging, on: :collection

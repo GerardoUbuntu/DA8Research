@@ -2,11 +2,13 @@
             <div class ="col-sm-6 col-sm-offset-3">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Add Research</h3>
+                    <h3 class="panel-title">Edit Research</h3>
                 </div>
                 <div class="panel-body">
                     <%= form_for @research, :url => {controller: 'researches', action: 'update'} do |f| %>
-                         <%= react_component 'EditResearch', {research: @researchJson, users: @users}%>
+                         <%= react_component 'EditResearch', {research: @researchJson, users: @users, sectors: @sectors, 
+                                    commodities: @commodities, disciplines: @disciplines,
+                                    technologies: @technologies, sources: @sources}%>
                    <%end%>
      
                 </div>

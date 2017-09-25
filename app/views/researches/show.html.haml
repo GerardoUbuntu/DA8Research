@@ -1,17 +1,32 @@
-%h2 Details about #{@research.title}
+%div.container
+  %h2 #{@research.title}
+  %h3 Summary: #{@research.abstract}
+  %p Researchers:
+  - @research.users.each do |researcher| 
+    %i= researcher.email
+  %ul#details
+    %li
+      Status:
+      = @research.status
+    %li
+      Date Started:
+      = @research.date_started.strftime("%B %d, %Y")
 
-%ul#details
-  %li
-    Status:
-    = @research.status
-  %li
-    Date Started:
-    = @research.date_started.strftime("%B %d, %Y")
+    %li
+      Technology:
+      = @research.technology
+    %li
+      Sector:
+      = @research.sector
+    %li
+      Commodity:
+      = @research.commodity
+    %li
+      Discipline:
+      = @research.discipline
+    %li
+      Discipline:
+      = @research.discipline
 
-%h3 Description:
-
--#%p#description= @movie.description
-- if logged_in? 
-  = button_to 'Edit', edit_research_path(@research)
-  = button_to 'Delete', research_path(@research), :method => :delete, :confirm => 'Are you sure?'
-= button_to 'Back to research list', researches_path, :method => "get"
+  -#%p#description= @movie.description
+  = button_to 'Back to research list', researches_path, :method => "get"
